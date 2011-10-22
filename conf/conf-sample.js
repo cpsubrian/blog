@@ -2,11 +2,11 @@
  * Application Configuration.
  */
 module.exports = {
-  port: 3007,
-  hostname: 'localhost:3007',
-  title: 'Application Title',
+  port: 3001,
+  hostname: 'localhost:3001',
+  title: "Blog",
   session: {
-    secret: 'Your Secret Here'
+    secret: 'your session secret'
   },
   cluster: {
     workers: 1
