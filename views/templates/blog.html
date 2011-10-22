@@ -1,0 +1,26 @@
+<script type="text/template" id="template-blog">
+  <div class="blog">
+    <h2>${blog.title}</h2>
+    ${blog.body}
+  </div>
+</script>
+
+<script type="text/template" id="template-form">
+  <form id="blog-form">
+  
+    <div class="field">
+      <label>Title</label>
+      <input type="text" name="blog[title]" />
+    </div>
+    
+    <div class="field">
+      <label>Body</label>
+      <textarea name="blog[body]"></textarea>
+    </div>
+    
+    <div class="button">
+      <input type="submit" value="Save" />
+    </div>
+    
+  </form>
+</script>

@@ -3,12 +3,14 @@
  */
 
 var fs = require('fs');
+var templates = false;
 
 module.exports = function(app){
   
   // Static helpers.
   app.helpers({
-    title: app.conf.title
+    title: app.conf.title,
+    templates: getTemplates()
   });
   
   // Dynamic helpers.
@@ -24,4 +26,20 @@ module.exports = function(app){
     require('./' + name)(app);
   });
   
+}
+
+/**
+ * Get tempaltes
+ */
+function getTemplates() {
+  if (!templates) {
+    templates = {};
+    var dir = __dirname + '/../views/templates';
+    fs.readdirSync(dir).forEach(function(file) {
+      var name = file.substr(0, file.indexOf('.'));
+      var data = fs.readFileSync(dir + '/' + file, 'utf8');
+      templates[name] = data;
+    });
+  }
+  return templates;
 }

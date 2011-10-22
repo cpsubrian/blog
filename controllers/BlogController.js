@@ -32,7 +32,7 @@ module.exports = function(app) {
    */
   BlogController.prototype.list = function(req, res) {
     app.models.Blog.find({}, function(err, blogs) {
-      if (err) throw new Error(err);
+      if (err) throw err;
       if (!blogs) throw new Error('failed to find any blogs');
       res.send(blogs);
     })
@@ -52,7 +52,7 @@ module.exports = function(app) {
     // @todo Validate body.
     var blog = new app.models.Blog(req.body.blog);
     blog.save(function(err) {
-      if (err) throw new Error(err);
+      if (err) throw err;
       res.send(blog);
     });
   }
@@ -65,7 +65,7 @@ module.exports = function(app) {
       req.blog[prop] = req.body.blog[prop];
     }
     req.blog.save(function(err) {
-      if (err) throw new Error(err);
+      if (err) throw err;
       res.send(req.blog);
     });
   }
