@@ -1,0 +1,5 @@
+bin/logs/*
+bin/pids/*
+conf/conf.js
+public/css/*.css
+node_modules/*
