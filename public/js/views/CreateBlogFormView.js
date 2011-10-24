@@ -13,7 +13,7 @@
       _.bindAll(this); 
     },
     
-    template: $('#template-form').template(),
+    template: $('#template-create-blog-form').template(),
     
     render: function() {
       $(this.el).html($.tmpl(this.template, {}));

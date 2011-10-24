@@ -41,5 +41,12 @@ function getTemplates() {
       templates[name] = data;
     });
   }
-  return templates;
+  
+  var templateHtml = '';
+  for (var name in templates) {
+    templateHtml += '<script type="text/template" id="template-' + name + '">' + "\n";
+    templateHtml += templates[name] + "\n";
+    templateHtml += '</script>' + "\n\n";
+  }  
+  return templateHtml;
 }
