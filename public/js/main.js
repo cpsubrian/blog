@@ -1,13 +1,18 @@
 (function($) {
   
   // Setup application namespace.
-  window.App = {};
+  window.App = {
+    models: {},
+    views: {},
+    collections: {},
+    routers: {}
+  };
   
   // On DOM loaded.
   $(function() {
     
     // Create AppView.
-    var appView = new App.AppView();
+    App.views.app = new App.AppView();
     
   });
   

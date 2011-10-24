@@ -18,7 +18,10 @@ module.exports = function(app) {
       'http://html5shim.googlecode.com/svn/trunk/html5.js',
       
       '/js/main.js',
-      '/js/views/AppView.js'
+      '/js/views/AppView.js',
+      '/js/views/BlogView.js',
+      '/js/views/CreateBlogFormView.js',
+      '/js/models/Blog.js'
     ]
   };
   

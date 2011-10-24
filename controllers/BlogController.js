@@ -20,11 +20,11 @@ module.exports = function(app) {
     });
     
     // Routes.
-    app.get('/blog', this.list);
-    app.get('/blog/:blogId', this.read);
-    app.post('/blog', this.create);
-    app.put('/blog/:blogId', this.update);
-    app.del('/blog/:blogId', this.remove);
+    app.get('/blogs', this.list);
+    app.get('/blogs/:blogId', this.read);
+    app.post('/blogs', this.create);
+    app.put('/blogs/:blogId', this.update);
+    app.del('/blogs/:blogId', this.remove);
   }
   
   /**
@@ -50,7 +50,7 @@ module.exports = function(app) {
    */
   BlogController.prototype.create = function(req, res) {
     // @todo Validate body.
-    var blog = new app.models.Blog(req.body.blog);
+    var blog = new app.models.Blog(req.body);
     blog.save(function(err) {
       if (err) throw err;
       res.send(blog);
@@ -61,8 +61,8 @@ module.exports = function(app) {
    * Update a blog post. put('/blog/:blogId')
    */
   BlogController.prototype.update = function(req, res) {
-    for (var prop in req.body.blog) {
-      req.blog[prop] = req.body.blog[prop];
+    for (var prop in req.body) {
+      req.blog[prop] = req.body[prop];
     }
     req.blog.save(function(err) {
       if (err) throw err;

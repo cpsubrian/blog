@@ -12,9 +12,13 @@
       _.bindAll(this); 
     },
     
-    showCreateBlogForm: function() {
-      var createBlogFormView = new App.CreateBlogFormView();
-      createBlogFormView.render();
+    showCreateBlogForm: function(e) {
+      App.views.createBlogForm = new App.CreateBlogFormView();
+      App.views.createBlogForm.render();
+    },
+    
+    replaceMainContent: function(content) {
+      $('#main-content').empty().append(content);
     }
     
   });

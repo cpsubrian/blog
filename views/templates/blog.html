@@ -1,25 +1,31 @@
 <script type="text/template" id="template-blog">
   <div class="blog">
-    <h2>${blog.title}</h2>
-    ${blog.body}
+    <h2>${title}</h2>
+    ${body}
   </div>
 </script>
 
 <script type="text/template" id="template-form">
   <form id="blog-form">
   
+    <h3>Create a new blog post</h3>
+  
     <div class="field">
       <label>Title</label>
-      <input type="text" name="blog[title]" />
+      <div class="input">
+        <input type="text" name="title" />
+      </div>
     </div>
     
     <div class="field">
       <label>Body</label>
-      <textarea name="blog[body]"></textarea>
+      <div class="input">
+        <textarea name="body"></textarea>
+      </div>
     </div>
     
-    <div class="button">
-      <input type="submit" value="Save" />
+    <div class="input">
+      <input class="btn primary" type="submit" value="Save" />
     </div>
     
   </form>
