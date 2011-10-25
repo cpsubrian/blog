@@ -17,7 +17,11 @@
     
     render: function() {
       $(this.el).html($.tmpl(this.template, {}));
-      App.views.app.replaceMainContent(this.el);
+      return this;
+    },
+    
+    display: function() {
+      App.views.app.replaceMainContent(this.render().el);
     },
     
     submit: function(e) {
@@ -28,10 +32,18 @@
         title: $(this.el).find('input[name="title"]').val(),
         body: $(this.el).find('textarea[name="body"]').val()
       });
-      blog.save();
-      
-      var blogView = new App.BlogView({model: blog});
-      blogView.render();
+      blog.save(null, {
+        success: function(blog, res) {
+          App.collections.blogs.add(blog);
+          App.routers.blog.navigate('blogs/' + blog.get('_id'), true); 
+        },
+        error: function(blog, res) {
+          alert('Error saving blog.');
+          console.log(blog);
+          console.log(res);
+        }
+      });
+      return false;
     }
     
   });

@@ -13,7 +13,7 @@ module.exports = function(app) {
     app.param('blogId', function(req, res, next, blogId) {
       app.models.Blog.findById(blogId, function(err, blog) {
         if (err) return next(err);
-        if (!user) return next(new Error('failed to find blog'));
+        if (!blog) return next(new Error('failed to find blog'));
         req.blog = blog;
         next();
       });
@@ -31,7 +31,7 @@ module.exports = function(app) {
    * List blog posts. get('/blog')
    */
   BlogController.prototype.list = function(req, res) {
-    app.models.Blog.find({}, function(err, blogs) {
+    app.models.Blog.find().sort('$natural', -1).exec(function(err, blogs) {
       if (err) throw err;
       if (!blogs) throw new Error('failed to find any blogs');
       res.send(blogs);

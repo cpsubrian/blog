@@ -3,6 +3,7 @@
   App.BlogView = Backbone.View.extend({
     
     tagName: 'article',
+    className: 'blog',
     
     initialize: function() {
       _.bindAll(this); 
@@ -12,7 +13,11 @@
     
     render: function() {
       $(this.el).html($.tmpl(this.template, this.model.attributes));
-      App.views.app.replaceMainContent(this.el);
+      return this;
+    },
+    
+    display: function() {
+      App.views.app.replaceMainContent(this.render().el);
     }
     
   });
